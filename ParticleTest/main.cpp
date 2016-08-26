@@ -1,6 +1,6 @@
 
 //
-// Disclamer:
+// Disclaimer:
 // ----------
 //
 // This code will work only if you selected window, graphics and audio.
@@ -14,16 +14,26 @@
 // method resourcePath() from ResourcePath.hpp
 //
 
-#include <SFML/Audio.hpp>
-#include <SFML/Graphics.hpp>
-
+#include <JParticle.hpp>
 // Here is a small helper for you ! Have a look.
 #include "ResourcePath.hpp"
+#include <iostream>
 
+void modifier(JParticle& modp){
+
+    modp.getVelocity() = sf::Vector2f(((rand()%10)-5)/1,((rand()%10)-5)/1);
+}
+void modifier2(JParticle& modp){
+    modp.getLocation() = sf::Vector2f(100,100);
+}
 int main(int, char const**)
 {
+    
+    srand(time(NULL));
+    srand(time(NULL)*rand());
+    srand(time(NULL)*rand());
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(2400, 1800), "JLib Particle Test");
 
     // Set the Icon
     sf::Image icon;
@@ -32,30 +42,29 @@ int main(int, char const**)
     }
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-    // Load a sprite to display
-    sf::Texture texture;
-    if (!texture.loadFromFile(resourcePath() + "cute_image.jpg")) {
-        return EXIT_FAILURE;
-    }
-    sf::Sprite sprite(texture);
-
     // Create a graphical text to display
     sf::Font font;
     if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
         return EXIT_FAILURE;
     }
-    sf::Text text("Hello SFML", font, 50);
+    sf::Text text("Particle Test using JSFML", font, 50);
     text.setColor(sf::Color::Black);
-
-    // Load a music to play
-    sf::Music music;
-    if (!music.openFromFile(resourcePath() + "nice_music.ogg")) {
+    sf::Texture particleTexture;
+    if(!particleTexture.loadFromFile(resourcePath() + "starparticle.svg.thumb.png")){
         return EXIT_FAILURE;
     }
-
-    // Play the music
-    music.play();
-
+    JParticleController jpc;
+    jpc.setParticleTexture(particleTexture);
+    jpc.setParticleConstraints(sf::Vector2f(100,100));
+    jpc.intmods.push_back(modifier);
+    //jpc.intmods.push_back(modifier2);
+    jpc.spawnParticles(1, sf::Vector2i(100,100));
+    jpc.spawnParticles(1, sf::Vector2i(4,100));
+    jpc.spawnParticles(1, sf::Vector2i(130,200));
+    jpc.spawnParticles(1, sf::Vector2i(300,0));
+    sf::View view(sf::FloatRect(0, 0, 2400, 1800));
+    window.setView(view);
+    view.zoom(-100);
     // Start the game loop
     while (window.isOpen())
     {
@@ -72,17 +81,19 @@ int main(int, char const**)
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
                 window.close();
             }
+            else if(event.type == event.MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left){
+                //std::cout<<"c"<<std::endl;
+                jpc.spawnParticles(8, sf::Mouse::getPosition());
+            }
         }
 
         // Clear screen
-        window.clear();
-
-        // Draw the sprite
-        window.draw(sprite);
+        window.clear(sf::Color::Black);
 
         // Draw the string
         window.draw(text);
-
+        //jpc.spawnParticles(2, sf::Vector2i(1200,900));
+        jpc.frameRun(window);
         // Update the window
         window.display();
     }
