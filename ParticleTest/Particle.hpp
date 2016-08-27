@@ -14,7 +14,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
-class JParticle{
+class Particle{
 private:
     
     sf::Vector2f location;
@@ -30,7 +30,7 @@ private:
 protected:
 
 public:
-    JParticle(sf::Vector2i loc);
+    Particle(sf::Vector2i loc);
     
     sf::Vector2f& getLocation();
     
@@ -49,16 +49,16 @@ public:
     void updatePosition();
 };
 
-class JParticleController{
+class ParticleController{
     sf::Vector2f particleConstraits;
     sf::Texture particleTexture;
-    std::vector<JParticle> particles;
+    std::vector<Particle> particles;
 public:
     void setParticleTexture(sf::Texture t);
     void spawnParticles(int amount, sf::Vector2i location);
-    std::vector<std::function<void(JParticle&)> > intmods;
+    std::vector<std::function<void(Particle&)> > intmods;
     void frameRun(sf::RenderWindow& w);
-    void handleCollisions(JParticle&,JParticle&);
+    void handleCollisions(Particle&,Particle&);
     void setParticleConstraints(sf::Vector2f);
 };
 

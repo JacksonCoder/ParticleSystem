@@ -14,16 +14,16 @@
 // method resourcePath() from ResourcePath.hpp
 //
 
-#include <JParticle.hpp>
+#include <Particle.hpp>
 // Here is a small helper for you ! Have a look.
 #include "ResourcePath.hpp"
 #include <iostream>
 
-void modifier(JParticle& modp){
+void modifier(Particle& modp){
 
     modp.getVelocity() = sf::Vector2f(((rand()%10)-5)/1,((rand()%10)-5)/1);
 }
-void modifier2(JParticle& modp){
+void modifier2(Particle& modp){
     modp.getLocation() = sf::Vector2f(100,100);
 }
 int main(int, char const**)
@@ -53,15 +53,15 @@ int main(int, char const**)
     if(!particleTexture.loadFromFile(resourcePath() + "starparticle.svg.thumb.png")){
         return EXIT_FAILURE;
     }
-    JParticleController jpc;
-    jpc.setParticleTexture(particleTexture);
-    jpc.setParticleConstraints(sf::Vector2f(100,100));
-    jpc.intmods.push_back(modifier);
+    ParticleController pc;
+    pc.setParticleTexture(particleTexture);
+    pc.setParticleConstraints(sf::Vector2f(100,100));
+    pc.intmods.push_back(modifier);
     //jpc.intmods.push_back(modifier2);
-    jpc.spawnParticles(1, sf::Vector2i(100,100));
-    jpc.spawnParticles(1, sf::Vector2i(4,100));
-    jpc.spawnParticles(1, sf::Vector2i(130,200));
-    jpc.spawnParticles(1, sf::Vector2i(300,0));
+    pc.spawnParticles(1, sf::Vector2i(100,100));
+    pc.spawnParticles(1, sf::Vector2i(4,100));
+    pc.spawnParticles(1, sf::Vector2i(130,200));
+    pc.spawnParticles(1, sf::Vector2i(300,0));
     sf::View view(sf::FloatRect(0, 0, 2400, 1800));
     window.setView(view);
     view.zoom(-100);
@@ -83,7 +83,7 @@ int main(int, char const**)
             }
             else if(event.type == event.MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left){
                 //std::cout<<"c"<<std::endl;
-                jpc.spawnParticles(8, sf::Mouse::getPosition());
+                pc.spawnParticles(8, sf::Mouse::getPosition());
             }
         }
 
@@ -93,7 +93,7 @@ int main(int, char const**)
         // Draw the string
         window.draw(text);
         //jpc.spawnParticles(2, sf::Vector2i(1200,900));
-        jpc.frameRun(window);
+        pc.frameRun(window);
         // Update the window
         window.display();
     }

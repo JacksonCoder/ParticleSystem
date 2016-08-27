@@ -11,8 +11,8 @@
 		95116BA11D63BED200D03318 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95116BA01D63BED200D03318 /* main.cpp */; };
 		95116BA81D63BED300D03318 /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95116BA71D63BED300D03318 /* sansation.ttf */; };
 		95116BAA1D63BED300D03318 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 95116BA91D63BED300D03318 /* icon.png */; };
-		95116BB21D63BF4100D03318 /* JParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95116BB01D63BF4100D03318 /* JParticle.cpp */; };
 		95116BB41D63D25F00D03318 /* starparticle.svg.thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 95116BB31D63D25F00D03318 /* starparticle.svg.thumb.png */; };
+		95D8D9F81D713437006425E0 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95D8D9F71D713437006425E0 /* Particle.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,9 +23,9 @@
 		95116BA01D63BED200D03318 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		95116BA71D63BED300D03318 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
 		95116BA91D63BED300D03318 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		95116BB01D63BF4100D03318 /* JParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JParticle.cpp; sourceTree = "<group>"; };
-		95116BB11D63BF4100D03318 /* JParticle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = JParticle.hpp; sourceTree = "<group>"; };
 		95116BB31D63D25F00D03318 /* starparticle.svg.thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starparticle.svg.thumb.png; sourceTree = "<group>"; };
+		95D8D9F71D713437006425E0 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
+		95D8D9F91D713440006425E0 /* Particle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Particle.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +61,8 @@
 				95116B9D1D63BED200D03318 /* ResourcePath.mm */,
 				95116B9F1D63BED200D03318 /* ResourcePath.hpp */,
 				95116BA01D63BED200D03318 /* main.cpp */,
-				95116BB01D63BF4100D03318 /* JParticle.cpp */,
-				95116BB11D63BF4100D03318 /* JParticle.hpp */,
+				95D8D9F91D713440006425E0 /* Particle.hpp */,
+				95D8D9F71D713437006425E0 /* Particle.cpp */,
 				95116BA21D63BED300D03318 /* Resources */,
 				95116B9B1D63BED200D03318 /* Supporting Files */,
 			);
@@ -173,8 +173,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95116BB21D63BF4100D03318 /* JParticle.cpp in Sources */,
 				95116BA11D63BED200D03318 /* main.cpp in Sources */,
+				95D8D9F81D713437006425E0 /* Particle.cpp in Sources */,
 				95116B9E1D63BED200D03318 /* ResourcePath.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
